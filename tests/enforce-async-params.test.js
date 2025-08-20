@@ -10,6 +10,12 @@ tester.run("enforce-async-params", rule, {
     `export async function Page(context) {
        const { params } = await context;
      }`,
+    `export default async function Page({ params }) {
+       const { statusCode } = params;
+     }`,
+    `const Page = async ({ searchParams }) => {
+       const { message } = searchParams ?? {};
+     }`,
   ],
   invalid: [
     {
@@ -21,6 +27,18 @@ tester.run("enforce-async-params", rule, {
     {
       code: `const Page = (context) => {
         const { searchParams } = context;
+      }`,
+      errors: [{ messageId: "requireAsync" }],
+    },
+    {
+      code: `export default function Page({ params }) {
+        const { statusCode } = params;
+      }`,
+      errors: [{ messageId: "requireAsync" }],
+    },
+    {
+      code: `const Page = ({ searchParams }) => {
+        const { message } = searchParams ?? {};
       }`,
       errors: [{ messageId: "requireAsync" }],
     },

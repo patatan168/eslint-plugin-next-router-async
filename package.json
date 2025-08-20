@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-next-router-async",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ESLint rule to enforce async usage of params and searchParams in Next.js App Router",
   "main": "index.js",
   "keywords": [

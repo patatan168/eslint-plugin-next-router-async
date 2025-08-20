@@ -28,6 +28,20 @@ npm install eslint-plugin-next-router-async --save-dev
 }
 ```
 
+ESLint v9+
+
+```js
+{
+files: ['**/*.js'],
+plugins: {
+    'next-router-async': plugin,
+},
+rules: {
+    'next-router-async/enforce-async-params': 'error',
+},
+}
+```
+
 ## 📐 Rule: enforce-async-params
 
 ### ❌ Incorrect
